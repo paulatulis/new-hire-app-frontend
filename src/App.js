@@ -1,17 +1,19 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { onPageLoad } from './actions/user_actions';
 import { connect } from 'react-redux';
-import Navbar from './components/Navbar'
-import LandingPage from './views/LandingPage'
-import Footer from './components/Footer'
-import Login from './views/Login'
-import SignUp from './views/SignUp'
-import Dashboard from './views/Dashboard'
-import Profile from './views/Profile'
-import EditProfile from './views/EditProfile'
-import ErrorCode from './views/ErrorCode'
-import LunchMatcher from './views/LunchMatcher'
+import Navbar from './components/Navbar';
+import LandingPage from './views/LandingPage';
+import Footer from './components/Footer';
+import Login from './views/Login';
+import SignUp from './views/SignUp';
+import Dashboard from './views/Dashboard';
+import Profile from './views/Profile';
+import EditProfile from './views/EditProfile';
+import ErrorCode from './views/ErrorCode';
+import LunchMatcher from './views/LunchMatcher';
+import TaskForm from './views/TaskForm';
+import { getAllYelp } from './actions/lunch_actions';
 
 
 
@@ -25,26 +27,30 @@ class App extends React.Component {
     if (token) {
       this.props.onPageLoad(token)
     }
-
+    this.props.getYelp()
   }
 
-
   render() {
-    console.log(this.props)
     return (
       <div className="container">
-        {/* <Navbar /> */}
-        <Login />
-        {!this.props.user.id || !localStorage.token? 
-        <LandingPage />
+        <Navbar />
+      {!this.props.user.id || !localStorage.token || !this.props.yelpData ? 
+
+        <div>
+           <LandingPage />
+           <Route exact path='/login' component={Login}/>
+        </div>
+
         :
+
         <Switch>
           <Route exact path='/login' component={Login} />
 					<Route exact path='/sign-up' component={SignUp} />
           <Route exact path='/login' component={Login}/>
           <Route exact path='/sign_up' component={SignUp}/>
           <Route exact path='/dashboard' component={Dashboard}/>
-          {/* <Route exact path='/lunch_matcher' render={()=> <LunchMatcher data={this.props.yelpData.businesses}/>}/> */}
+          <Route exact path='/new_task' component={TaskForm}/>
+          <Route exact path='/lunch_matcher' render={()=> <LunchMatcher data={this.props.yelpData}/>}/>
           <Route exact path='/profile' component={Profile}/>
           <Route exact path='/edit_profile' component={EditProfile}/>
           <Route render={()=> <ErrorCode code='404 - Not Found'/> } />
@@ -58,13 +64,16 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return{
-    user: state.user
+    user: state.user,
+    yelpData: state.lunch.data
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPageLoad: (token) => dispatch(onPageLoad(token))
+    onPageLoad: (token) => dispatch(onPageLoad(token)),
+    getYelp: () => dispatch(getAllYelp()),
+
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter (connect(mapStateToProps, mapDispatchToProps)(App))

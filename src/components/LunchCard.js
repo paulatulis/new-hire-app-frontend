@@ -12,7 +12,7 @@ return(
                     <p>{props.lunch.address}</p>
                     <span className="card-title-content"> </span>
                     <p>{props.lunch.photo}</p>
-                    
+                    <button className="waves-effect waves-light green lighten-1 btn" onClick={(e, lunch) => props.handleCancel(e, props.lunch)}>Cancel Lunch</button>
                 </div>
             </div>
     </div>

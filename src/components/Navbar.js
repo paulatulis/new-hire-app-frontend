@@ -29,5 +29,5 @@ function Navbar(props) {
     )
 }
 
-let mapStateToProps = state => ({ loggedIn: state.session.loggedIn, user_id: state.user.id })
+let mapStateToProps = state => ({ loggedIn: state.user.loggedIn, user_id: state.user.id })
 export default connect(mapStateToProps)(Navbar)

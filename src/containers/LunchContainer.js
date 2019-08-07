@@ -6,10 +6,15 @@ let lunchArray
 class LunchContainer extends Component {
 
     render() {
-        lunchArray = this.props.allL.map((lunch) => <div className="col s6"><LunchCard key={lunch.id} lunch={lunch} /></div>)
+        lunchArray = this.props.allL.map((lunch) => <div className="col s6"><LunchCard key={lunch.id} lunch={lunch} handleCancel={this.props.handleCancel}/></div>)
+        
         return (
             <div>
-                {lunchArray}
+                {!this.props.allL ? null 
+                :
+                <div> {lunchArray}</div>
+                }
+                
             </div>
         )
     }

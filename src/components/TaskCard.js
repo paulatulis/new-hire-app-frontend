@@ -15,8 +15,7 @@ function TaskCard(props) {
                         <span className="card-title-content">{props.task.complete? "Complete!" : "Incomplete"}</span>
                     </label></p>
                 </div>
-                <div className="more-task-info-btn btn" onClick={(e) => props.handleClick(e)}>Show More</div>
-            </div>
+            </div>    
         </div>
     )
 }

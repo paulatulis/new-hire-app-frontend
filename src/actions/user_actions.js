@@ -19,7 +19,7 @@ export function onPageLoad(token) {
             	dispatch({ type: 'ERRORS', errorType: 'pageload', errors: res.errors })
             })
     }
-        
+
 
 }
 
@@ -83,5 +83,19 @@ export function handleLogin(e) {
 	  		dispatch({type: 'ERRORS', errorType: 'login', errors: res.errors})
 	  	}
 	  })
+	}
+}
+
+export function getAllUsers(){
+	return dispatch => {
+		return fetch(base_url+'/users', {
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			}
+		}).then(res => res.json())
+		.then(res => {
+			dispatch({type: 'SET_ALL_USERS', users: res})
+		})
 	}
 }

@@ -6,10 +6,15 @@ let taskArray
 class TaskContainer extends Component {
 
     render() {
-        taskArray = this.props.allT.map((task) => <div className="col s6"><TaskCard key={task.id} task={task} /></div>)
+        taskArray = this.props.allT.map((task) => <div className="col s6"><TaskCard key={task.id} task={task} handleComplete={this.props.handleComplete}/></div>)
         return (
             <div>
-                {taskArray}
+                {
+                !this.props.allT? null 
+                :
+                <div> {taskArray}</div>
+                }
+                
             </div>
         )
     }
