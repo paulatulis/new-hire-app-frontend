@@ -9,7 +9,7 @@ class LunchContainer extends Component {
         lunchArray = this.props.allL.map((lunch) => <div className="col s6"><LunchCard key={lunch.id} lunch={lunch} handleCancel={this.props.handleCancel}/></div>)
         
         return (
-            <div>
+            <div className="overview row">
                 {!this.props.allL ? null 
                 :
                 <div> {lunchArray}</div>

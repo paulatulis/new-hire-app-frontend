@@ -1,7 +1,6 @@
 const base_url = 'http://localhost:3000'
 
 export function onPageLoad(token) {
-	console.log('here', token)
     return dispatch => {
 		fetch(base_url+'/init-state', {
 			headers: { 
@@ -10,7 +9,6 @@ export function onPageLoad(token) {
 		})
 		.then(res => res.json())
 		.then(res => {
-			// console.log(res)
 			if(res) {
 				dispatch({ type: 'SET_USER', user: res})
                 dispatch({ type: 'ERRORS'})
@@ -36,7 +34,6 @@ export function handleSignUp(e) {
 	}
 
 	return dispatch => {
-		
 		fetch(base_url+'/users', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -97,5 +94,37 @@ export function getAllUsers(){
 		.then(res => {
 			dispatch({type: 'SET_ALL_USERS', users: res})
 		})
+	}
+}
+
+export function editUser (e, userEdit, user) {
+	e.preventDefault()
+	let userBody = {
+		email: userEdit.email,
+		username: userEdit.username,
+		team: userEdit.team,
+		title: userEdit.title,
+		bio: userEdit.bio,
+		photo: userEdit.photo
+	}
+	return dispatch => {
+	  fetch(base_url+`/users/${user.id}`, {
+	    method: 'PATCH',
+		headers: { 
+			'Content-Type': 'application/json', 
+			Accept: 'application/json',
+			Authorization: localStorage.token 
+		},
+	    body: JSON.stringify({ user: userEdit })
+	  })
+	  .then(res => res.json())
+	  .then(res => {
+		if(res.errors) {
+			dispatch({ type: 'ERRORS', errType: 'updateUser', errors: res.errors })
+		}
+		else {
+			dispatch({ type: 'SET_USER', user: res })
+		}
+	  })
 	}
 }

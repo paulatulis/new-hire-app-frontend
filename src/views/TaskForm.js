@@ -30,12 +30,21 @@ class TaskForm extends Component {
             return this.state.redirect
         return (
             <div>
-                <h1>Create a New Task</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input required name='title' type='text' placeholder='Title' />
-                    <textarea required name='description' placeholder='Task Description'></textarea>
-                    <Calendar minDate={new Date()} onChange={ e => this.setState({ date: e }) } />
-                    <button type='submit' className='btn-blue submit-btn'>Submit</button>
+                <form className="ui-form" onSubmit={this.handleSubmit}>
+                    <div className="row">
+                        <div className="col s5">
+                            <div className="field">
+                                <input required name='title' type='text' placeholder='Title' />
+                            </div>
+                            
+                            <div className="materialize-textarea">
+                                <input required name='description' placeholder='Task Description'/>
+                            </div>
+                            
+                        <Calendar minDate={new Date()} onChange={ e => this.setState({ date: e }) } />
+                        <button type='submit' className='waves-effect waves-light green lighten-1 btn'>Submit</button>
+                    </div>
+                    </div>
                 </form>
 
             </div>

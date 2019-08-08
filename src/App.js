@@ -32,7 +32,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="main-container">
+        <div className="grid-container">
         <Navbar />
       {!this.props.user.id || !localStorage.token || !this.props.yelpData ? 
 
@@ -57,6 +58,7 @@ class App extends React.Component {
         </Switch>
         }
         <Footer />
+        </div>
       </div>
     )
   }

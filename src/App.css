@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,90 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.main-container{
+  margin: 0;
+  background: url("https://images.pexels.com/photos/733852/pexels-photo-733852.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") no-repeat center center fixed;
+  background-size: cover;
+  height: 50%;
+  overflow: visible;
+  min-height: 100vh; 
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+}
+.page-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.landing{
+  padding-top: 10em;
+  padding-left: 30em;
+}
+
+.lp-card-title{
+  font-size: 30px;
+  font-weight: 700;
+  color: #004d40;
+}
+.card-title-content{
+  font-weight: 500;
+  color: #455a64;
+}
+
+.brand-logo{
+  margin: 0.5em;
+  width: 100px;
+}
+
+.nav-wrapper{
+  padding-left: 20px;
+}
+
+.ui-form{
+  padding-top: 5.5em;
+  padding-left: 2.5em;
+
+}
+
+.overview{
+  color:#00bfa5;
+  padding-left: 2em;
+}
+
+.card-title{
+  font-weight: 900;
+  color: #004d40;
+}
+
+.card-title-content{
+  font-weight: 500;
+  color: #455a64;
+}
+
+#add-task{
+  padding-left: 2.5em;
+}
+
+.calendar{
+  padding-left: 48em;
+}
+
+.btn{
+  margin: 2em;
+}
+
+.responsive-img{
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.profile-card-title-content{
+  font-weight: 700;
+  color: #607d8b;
 }

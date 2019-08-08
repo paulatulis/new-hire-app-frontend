@@ -33,29 +33,38 @@ class Dashboard extends Component {
 
 
     render(){
-        console.log(this.props.user)
-
 
         return(
-            <div>
+            <div className="main-container">
                 {!this.props.user.all_tasks || !this.props.user.all_LM?
                 null
             :
-            <div>
+            <div className="overview">
                 { this.state.redirect }
                     <h4>Welcome, {this.props.user.first_name}</h4>
-                        <div>
-                            <h2>Tasks</h2>
-                            <h3><button className="waves-effect waves-light green lighten-1 btn" onClick={this.handleAddT}>New Task</button></h3>
+                        <div className="main-card">
+                            <div className="overview" >
+                                <h2>Tasks</h2>
+                                <span id="add-task">
+                                    <button className="waves-effect waves-light light-green darken-2 btn" onClick={this.handleAddT}>New Task</button>
+                                </span>
+                            </div>
+                            <br></br>
                             <TaskContainer allT={this.props.user.all_tasks} handleComplete={this.handleComplete} handleAddNotes={this.handleAddNotes}/>
                         </div>
-                        <div>
-                            <h2>Upcoming Lunches</h2>
-                            <h3><button className="waves-effect waves-light green lighten-1 btn" onClick={this.handleAddL}>Schedule a Lunch!</button></h3>
+
+                        <div className="main-card">
+                            <div className="overview" >
+                                <h2>Upcoming Lunches</h2>
+                                <span id="add-task">
+                                    <button className="waves-effect waves-light light-green darken-2 btn" onClick={this.handleAddL}>Schedule a Lunch!</button>
+                                </span>
+                            </div>
+                            <br></br>
                             <LunchContainer allL={this.props.user.all_LM} handleCancel={this.handleCancel}/>
                         </div>
                 </div>
-            }
+                }   
             </div>
         )
     }
