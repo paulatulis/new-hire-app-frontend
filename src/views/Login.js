@@ -35,9 +35,9 @@ class Login extends Component {
     }
 }
 
-let mapStateToProps = state => ({ ...state })
+const mapStateToProps = state => ({ ...state })
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return { handleLogin: (user) => {dispatch(handleLogin(user)) }}
 }
 

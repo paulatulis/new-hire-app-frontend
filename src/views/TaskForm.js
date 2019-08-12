@@ -1,7 +1,7 @@
-import React, { Component }from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import Calendar from 'react-calendar'
+import React, { Component }from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Calendar from 'react-calendar';
 import { createNewT } from '../actions/task_actions';
 
 

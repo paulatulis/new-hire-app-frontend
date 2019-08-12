@@ -1,4 +1,4 @@
-const base_url = 'http://localhost:3000'
+const base_url = 'https://new-hire-app-backend.herokuapp.com'
 
 export function onPageLoad(token) {
     return dispatch => {
@@ -24,15 +24,18 @@ export function onPageLoad(token) {
 
 export function handleSignUp(e) {
 	e.preventDefault()
+	
 	let form = e.target
 	let newUser = {
 		first_name: form.first_name.value,
 		last_name: form.last_name.value,
+		email: form.email.value,
 		username: form.username.value,
 		password: form.password.value,
-		confirm_password: form.confirm.value
+		photo: form.photo.value
 	}
-
+console.log(form)
+console.log(newUser)
 	return dispatch => {
 		fetch(base_url+'/users', {
 			method: 'POST',
@@ -41,6 +44,7 @@ export function handleSignUp(e) {
 		})
 		.then(res => res.json())
 		.then(res => {
+			console.log(res)
 
 			if (res.errors) {
 				form.password.value = ''

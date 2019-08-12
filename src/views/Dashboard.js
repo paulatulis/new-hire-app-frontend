@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import LunchContainer from '../containers/LunchContainer';
 import TaskContainer from '../containers/TaskContainer';
 import { markComplete } from '../actions/task_actions';
@@ -18,6 +18,7 @@ class Dashboard extends Component {
         else {taskInfo.complete = true}
         this.props.updateTask(taskInfo)
     }
+
 
     handleAddT = () => {
         this.setState({ redirect: <Redirect to='/new_task' /> })
@@ -70,7 +71,9 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = state => ({ user: state.user })
+const mapStateToProps = state => ({ 
+    user: state.user
+ })
 
 const mapDispatchToProps = dispatch => {
     return {

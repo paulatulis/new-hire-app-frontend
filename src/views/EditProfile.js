@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { editUser } from '../actions/user_actions'
+import { editUser } from '../actions/user_actions';
 
 class EditProfile extends React.Component {
     state = {

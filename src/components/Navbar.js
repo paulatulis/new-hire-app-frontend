@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom'
-import tribe_logo from '../images/tribe2.png'
+import { Link } from 'react-router-dom';
+import tribe_logo from '../images/tribe2.png';
 import Login from '../views/Login';
 import SignUp from '../views/SignUp';
 

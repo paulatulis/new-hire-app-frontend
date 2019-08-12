@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase-tools": "^7.2.2",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.8.6",
     "react-calendar": "^2.19.0",

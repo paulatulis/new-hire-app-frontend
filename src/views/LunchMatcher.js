@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar'
+import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { getAllUsers } from '../actions/user_actions';
 import { addLunch } from '../actions/lunch_actions';
 
+let availableMatches
 class LunchMatcher extends Component {
 
     state = {
@@ -21,8 +22,10 @@ class LunchMatcher extends Component {
 
     handleMatch = (e, user) => {
         e.preventDefault()
-        console.log(user)
-        const match = this.props.colleagues[Math.floor(Math.random()*this.props.colleagues.length)]
+        if (this.props.colleagues) {
+            availableMatches = this.props.colleagues.filter(c => c.username !== this.props.user.username)
+        }
+        const match = availableMatches[Math.floor(Math.random()*availableMatches.length)]
         const restaurant = this.props.data[Math.floor(Math.random()*this.props.data.length)]
         this.setState({
             match: match,
@@ -33,7 +36,6 @@ class LunchMatcher extends Component {
 
     saveLunch = (e) => {
         e.preventDefault()
-        console.log(this.state)
         let myId = this.props.user.id
         this.props.addNewLunch(this.state, myId)
         this.setState({ redirect: <Redirect to='/dashboard' /> })
@@ -52,7 +54,6 @@ class LunchMatcher extends Component {
         const placeholderImg = "https://images.pexels.com/photos/1573806/pexels-photo-1573806.jpeg"
         const userPlaceholderImg = "http://www.liberaldictionary.com/wp-content/uploads/2019/01/dab-0428.jpg"
         const resPlaceholderImg = "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-
         return(
             <>
                 <div className="container center-align">

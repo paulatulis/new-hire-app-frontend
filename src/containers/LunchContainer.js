@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom';
-import LunchCard from '../components/LunchCard'
+import React, { Component } from 'react';
+import LunchCard from '../components/LunchCard';
 
 let lunchArray
 class LunchContainer extends Component {
@@ -10,7 +9,8 @@ class LunchContainer extends Component {
         
         return (
             <div className="overview row">
-                {!this.props.allL ? null 
+                {this.props.allL.length < 1 ? 
+                <div> What are you waiting for? Get to know your new colleagues over a meal! Click 'SCHEDULE A LUNCH!' to get started.</div>
                 :
                 <div> {lunchArray}</div>
                 }

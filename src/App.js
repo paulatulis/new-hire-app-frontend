@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { onPageLoad } from './actions/user_actions';
 import { connect } from 'react-redux';
 import Navbar from './components/Navbar';
-import LandingPage from './views/LandingPage';
+import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
 import Login from './views/Login';
 import SignUp from './views/SignUp';
@@ -14,6 +14,7 @@ import ErrorCode from './views/ErrorCode';
 import LunchMatcher from './views/LunchMatcher';
 import TaskForm from './views/TaskForm';
 import { getAllYelp } from './actions/lunch_actions';
+
 
 
 
@@ -31,6 +32,7 @@ class App extends React.Component {
   }
 
   render() {
+  
     return (
       <div className="main-container">
         <div className="grid-container">
@@ -40,15 +42,14 @@ class App extends React.Component {
         <div>
            <LandingPage />
            <Route exact path='/login' component={Login}/>
+           <Route exact path='/sign_up' component={SignUp} />
         </div>
 
         :
 
         <Switch>
           <Route exact path='/login' component={Login} />
-					<Route exact path='/sign-up' component={SignUp} />
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/sign_up' component={SignUp}/>
           <Route exact path='/dashboard' component={Dashboard}/>
           <Route exact path='/new_task' component={TaskForm}/>
           <Route exact path='/lunch_matcher' render={()=> <LunchMatcher data={this.props.yelpData}/>}/>
@@ -74,7 +75,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     onPageLoad: (token) => dispatch(onPageLoad(token)),
-    getYelp: () => dispatch(getAllYelp()),
+    getYelp: () => dispatch(getAllYelp())
 
   }
 }

@@ -6,10 +6,10 @@ function LandingPage(props) {
        <div>
            {
                window.location.pathname === '/' ?
-               <div className = "grid-container">
+               <div className = "grid-container center-align">
                 <div className="landing">
-                <div className="row center-align">
-                    <div className="card small teal lighten-5 col s6 center-align">
+                <div className="row ">
+                    <div className="card small teal lighten-5 col s5 offset-s2">
                         <br></br>
                         <br></br>
                         <span className="lp-card-title">Welcome to TRIBE!</span>
