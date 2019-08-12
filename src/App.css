@@ -9,7 +9,17 @@
   display: block;
   position: relative;
   padding-bottom: 100px;
+  align-content: center;
 }
+.grid-container{
+  align-content: center;
+}
+
+.lp-card-title{
+  align-content: center;
+  display: block;
+}
+
 .page-footer{
   position: absolute;
   bottom: 0;
