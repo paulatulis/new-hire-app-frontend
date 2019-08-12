@@ -1,4 +1,4 @@
-const base_url = 'https://new-hire-app-backend.herokuapp.com'
+const base_url = 'http://new-hire-app-backend.herokuapp.com'
 
 
 export function getAllYelp(){
